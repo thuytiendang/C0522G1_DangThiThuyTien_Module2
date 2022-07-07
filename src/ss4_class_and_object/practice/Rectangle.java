@@ -3,7 +3,8 @@ package ss4_class_and_object.practice;
 import java.util.Scanner;
 
 public class Rectangle {
-    double width, height;
+    double width;
+    double height;
 
     public Rectangle() {
     }
