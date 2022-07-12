@@ -1,6 +1,11 @@
 package ss8_cleanCode_refactoring.exercise.model;
 
 public class TennisGame {
+    private static final int LOVE = 0;
+    private static final int FIFTEEN = 1;
+    private static final int THIRTY = 2;
+    private static final int FORTY = 3;
+
     public static String getScore(String firstPlayerName, String secondPlayerName, int firstScore, int secondScore) {
         String score = "";
         if (firstScore == secondScore) {
@@ -19,13 +24,13 @@ public class TennisGame {
      */
     public static String getScore(int firstScore){
         switch (firstScore) {
-            case 0:
+            case LOVE:
                 return "Love-All";
-            case 1:
+            case FIFTEEN:
                 return "Fifteen-All";
-            case 2:
+            case THIRTY:
                 return "Thirty-All";
-            case 3:
+            case FORTY:
                 return "Forty-All";
             default:
                 return "Deuce";
