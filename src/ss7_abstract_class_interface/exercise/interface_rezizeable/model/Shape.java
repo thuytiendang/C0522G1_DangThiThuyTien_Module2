@@ -1,6 +1,6 @@
 package ss7_abstract_class_interface.exercise.interface_rezizeable.model;
 
-public class Shape {
+public abstract class Shape {
     public Object System;
     private String color = "green";
     private boolean filled = true;
@@ -35,4 +35,5 @@ public class Shape {
                 getColor() + "and" +
                 (isFilled()?"filled" : "not filled");
     }
+
 }

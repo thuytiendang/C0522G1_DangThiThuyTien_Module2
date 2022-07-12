@@ -1,18 +1,12 @@
 package ss7_abstract_class_interface.exercise.interface_rezizeable.controller;
 
 
-import ss7_abstract_class_interface.exercise.interface_rezizeable.model.Circle;
-import ss7_abstract_class_interface.exercise.interface_rezizeable.model.Rectangle;
-import ss7_abstract_class_interface.exercise.interface_rezizeable.model.Shape;
-import ss7_abstract_class_interface.exercise.interface_rezizeable.model.Square;
+import ss7_abstract_class_interface.exercise.interface_rezizeable.model.*;
 
-import java.util.Scanner;
 
 public class ResizeableTest {
     public static void main(String[] args) {
-        System.out.println("input proportion that you want to change:");
-        Scanner scanner = new Scanner(System.in);
-        int proportion = scanner.nextInt();
+        double percent = Math.floor(Math.random()*100) + 1;
         Shape[] shapes = new Shape[3];
         shapes[0] = new Circle();
         shapes[1] = new Rectangle();
@@ -20,7 +14,23 @@ public class ResizeableTest {
 
         for (Shape shape : shapes) {
             System.out.println(shape + "\n");
+        }
 
+        System.out.println("percent: " + percent + "%");
+
+        for (Shape shape : shapes){
+            /*if(shape instanceof Circle){
+                ((Circle)shape).resize(percent);
+            }else if (shape instanceof Rectangle){
+                ((Rectangle)shape).resize(percent);
+            } else if (shape instanceof Square){
+                ((Square)shape).resize(percent);
+            }*/
+
+            if(shape instanceof Resizeable){
+                ((Resizeable) shape).resize(percent);
+            }
+            System.out.println(shape + "\n");
         }
     }
 }
