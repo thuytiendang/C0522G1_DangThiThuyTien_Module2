@@ -1,6 +1,6 @@
 package further_exercise_mvc.controller;
 
-import further_exercise_mvc.service.impl.IPersonService;
+import further_exercise_mvc.service.IPersonService;
 import further_exercise_mvc.service.impl.StudentService;
 
 import java.util.Scanner;
