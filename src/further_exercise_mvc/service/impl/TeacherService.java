@@ -1,7 +1,9 @@
 package further_exercise_mvc.service.impl;
 
+import further_exercise_mvc.model.Student;
 import further_exercise_mvc.model.Teacher;
 import further_exercise_mvc.service.IPersonService;
+import further_exercise_mvc2.model.Truck;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +50,39 @@ public class TeacherService implements IPersonService {
         for (Teacher teacher : teacherList){
             System.out.println(teacher);
         }
+    }
+
+    @Override
+    public void findById(int id) {
+        for (int i = 0; i < teacherList.size(); i++) {
+            if (id == teacherList.get(i).getId()){
+                System.out.println(teacherList.get(i).toString());
+            }
+        }
+    }
+
+    @Override
+    public void findByName(String name) {
+        boolean flag = false;
+        for (Teacher teacher : teacherList) {
+            if (teacher.getName().contains(name)) {
+                System.out.println(teacher);
+                flag = true;
+            }
+        }
+       if (!flag){
+           System.err.println("không tìm thấy tên này!");
+       }
+    }
+
+    @Override
+    public boolean findId(int id) {
+        for (Teacher teacher : teacherList){
+            if (id == teacher.getId()){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static Teacher infoTeacher(){

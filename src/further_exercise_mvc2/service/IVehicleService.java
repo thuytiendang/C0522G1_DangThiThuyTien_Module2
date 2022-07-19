@@ -1,6 +1,6 @@
 package further_exercise_mvc2.service;
 
-public interface IVehicleService {
+public interface IVehicleService<E> {
     void add();
     void delete(String license);
     void getAll();

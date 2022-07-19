@@ -1,4 +1,6 @@
 package further_exercise_mvc2.service;
 
-public interface ICarService extends IVehicleService{
+import further_exercise_mvc2.model.Car;
+
+public interface ICarService extends IVehicleService<Car> {
 }
