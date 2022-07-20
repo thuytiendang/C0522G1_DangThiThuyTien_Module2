@@ -5,6 +5,7 @@ import further_exercise_mvc.service.IPersonService;
 import further_exercise_mvc2.model.Truck;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -90,7 +91,20 @@ public class StudentService implements IPersonService {
 
     @Override
     public void sortByName() {
+        boolean isSwap = true;
+        for (int i = 0; i < studentList.size() && isSwap; i++) {
+            isSwap = false;
 
+            for (int j = 0; j < studentList.size()-1-i; j++) {
+                if (studentList.get(j).getName().compareTo(studentList.get(j+1).getName()) > 0){
+                    Collections.swap(studentList,j,j+1);
+                    isSwap = true;
+                }
+            }
+        }
+        for (int i = 0; i < studentList.size(); i++) {
+            System.out.println(studentList.get(i) + "\n");
+        }
     }
 
     public static Student infoStudent(){

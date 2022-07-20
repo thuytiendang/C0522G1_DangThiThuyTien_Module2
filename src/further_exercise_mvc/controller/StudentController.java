@@ -38,6 +38,8 @@ public class StudentController {
                     findByName();
                     break;
                 case 6:
+                    iPersonService.sortByName();
+                    break;
                 case 7:
                     return;
             }
