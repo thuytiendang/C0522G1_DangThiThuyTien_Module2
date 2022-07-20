@@ -16,7 +16,8 @@ public class StudentController {
                     "3. Xem danh sách học sinh. \n" +
                     "4. Tìm sinh viên theo id\n" +
                     "5. Tìm sinh viên theo tên\n" +
-                    "6. Quay về menu chính.");
+                    "6. Sắp xếp tên\n" +
+                    "7. Quay về menu chính.");
 
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -37,6 +38,7 @@ public class StudentController {
                     findByName();
                     break;
                 case 6:
+                case 7:
                     return;
             }
         }while (true);

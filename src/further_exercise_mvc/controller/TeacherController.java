@@ -16,7 +16,8 @@ public class TeacherController {
                     "3. Xem danh sách giảng viên. \n" +
                     "4. Tìm giáo viên theo id\n" +
                     "5. Tìm giáo viên theo tên\n" +
-                    "6. Quay về menu chính.");
+                    "6. Sắp xếp tên\n" +
+                    "7. Quay về menu chính.");
 
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -37,7 +38,8 @@ public class TeacherController {
                     findByName();
                     break;
                 case 6:
-                    return;
+                case 7:
+                return;
             }
         } while (true);
     }

@@ -12,4 +12,6 @@ public interface IPersonService {
     void findByName(String name);
 
     boolean findId(int id);
+
+    void sortByName();
 }

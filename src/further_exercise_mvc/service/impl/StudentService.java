@@ -12,6 +12,12 @@ public class StudentService implements IPersonService {
     private static List<Student> studentList = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
+    static {
+        studentList.add(new Student(145,"Đặng Thị Thủy Tiên","20/03/2000","Nữ","12/2",8.0));
+        studentList.add(new Student(367,"Nguyễn Hà Duyên","23/07/2000","Nữ","12/2",8.5));
+        studentList.add(new Student(167,"Nguyễn Hoàng Đa Phúc","13/10/2000","Nam","12/2",9.0));
+    }
+
     public void add(){
         Student student = infoStudent();
         studentList.add(student);
@@ -80,6 +86,11 @@ public class StudentService implements IPersonService {
             }
         }
         return false;
+    }
+
+    @Override
+    public void sortByName() {
+
     }
 
     public static Student infoStudent(){
