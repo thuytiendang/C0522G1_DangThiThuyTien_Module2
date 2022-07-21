@@ -15,9 +15,9 @@ public class TeacherService implements IPersonService {
     private static Scanner scanner = new Scanner(System.in);
 
     static {
-        teacherList.add(new Teacher(123,"Nguyễn Thị Thu","24/5/1977","Nữ", "Thạc sĩ"));
-        teacherList.add(new Teacher(456,"Nguyễn Thị Hạ","26/6/1980","Nữ", "Thạc sĩ"));
-        teacherList.add(new Teacher(789,"Nguyễn Thị Xuân","12/9/1990","Nữ", "Thạc sĩ"));
+        teacherList.add(new Teacher(123, "Nguyễn Thị Thu", "24/5/1977", "Nữ", "Thạc sĩ"));
+        teacherList.add(new Teacher(456, "Nguyễn Thị Hạ", "26/6/1980", "Nữ", "Thạc sĩ"));
+        teacherList.add(new Teacher(789, "Nguyễn Thị Xuân", "12/9/1990", "Nữ", "Thạc sĩ"));
     }
 
     @Override
@@ -32,13 +32,13 @@ public class TeacherService implements IPersonService {
         System.out.println("Mời bạn nhập id cần xóa ");
         int idRemove = Integer.parseInt(scanner.nextLine());
         boolean isFlag = false;
-        for (Teacher teacher : teacherList){
-            if (teacher.getId() == idRemove){
+        for (Teacher teacher : teacherList) {
+            if (teacher.getId() == idRemove) {
                 System.out.println("bạn có chắc muốn xóa hay không? \n " +
                         "1. Có \n" +
                         "2. Không");
                 int chooseYesNo = Integer.parseInt(scanner.nextLine());
-                if (chooseYesNo == 1){
+                if (chooseYesNo == 1) {
                     teacherList.remove(teacher);
                     System.out.println("Xóa thành công!");
                 }
@@ -46,7 +46,7 @@ public class TeacherService implements IPersonService {
                 break;
             }
         }
-        if (!isFlag){
+        if (!isFlag) {
             System.out.println("Không tìm thấy.");
         }
 
@@ -54,7 +54,7 @@ public class TeacherService implements IPersonService {
 
     @Override
     public void displayAll() {
-        for (Teacher teacher : teacherList){
+        for (Teacher teacher : teacherList) {
             System.out.println(teacher);
         }
     }
@@ -62,7 +62,7 @@ public class TeacherService implements IPersonService {
     @Override
     public void findById(int id) {
         for (int i = 0; i < teacherList.size(); i++) {
-            if (id == teacherList.get(i).getId()){
+            if (id == teacherList.get(i).getId()) {
                 System.out.println(teacherList.get(i).toString());
             }
         }
@@ -77,15 +77,15 @@ public class TeacherService implements IPersonService {
                 flag = true;
             }
         }
-       if (!flag){
-           System.err.println("không tìm thấy tên này!");
-       }
+        if (!flag) {
+            System.err.println("không tìm thấy tên này!");
+        }
     }
 
     @Override
     public boolean findId(int id) {
-        for (Teacher teacher : teacherList){
-            if (id == teacher.getId()){
+        for (Teacher teacher : teacherList) {
+            if (id == teacher.getId()) {
                 return true;
             }
         }
@@ -98,19 +98,20 @@ public class TeacherService implements IPersonService {
         for (int i = 0; i < teacherList.size() && isSwap; i++) {
             isSwap = false;
 
-            for (int j = 0; j < teacherList.size()-1-i; j++) {
-                if (teacherList.get(j).getName().compareTo(teacherList.get(j+1).getName()) > 0){
-                    Collections.swap(teacherList,j,j+1);
+            for (int j = 0; j < teacherList.size() - 1 - i; j++) {
+                if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) > 0) {
+                    Collections.swap(teacherList, j, j + 1);
                     isSwap = true;
                 }
             }
         }
-        for (int i = 0; i < teacherList.size(); i++) {
-            System.out.println(teacherList.get(i) + "\n");
-        }
+//        for (int i = 0; i < teacherList.size(); i++) {
+//            System.out.println(teacherList.get(i) + "\n");
+//        }
+        displayAll();
     }
 
-    public static Teacher infoTeacher(){
+    public static Teacher infoTeacher() {
         System.out.println("Nhập id : ");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập tên : ");
@@ -121,7 +122,7 @@ public class TeacherService implements IPersonService {
         String gender = scanner.nextLine();
         System.out.println("Nhập tình độ : ");
         String speciality = scanner.nextLine();
-        Teacher teacher = new Teacher(id, name, dateOfBirth, gender,speciality );
+        Teacher teacher = new Teacher(id, name, dateOfBirth, gender, speciality);
         return teacher;
     }
 }
