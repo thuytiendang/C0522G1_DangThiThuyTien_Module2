@@ -23,6 +23,10 @@ private String speciality;
         this.speciality = speciality;
     }
 
+    public String getInfo(){
+        return String.format("%s, %s, %s, %s, %s\n", this.getId(), this.getName(), this.getDateOfBirth(), this.getGender(), this.getSpeciality());
+    }
+
     @Override
     public String toString() {
         return "Name: " + super.getName() +

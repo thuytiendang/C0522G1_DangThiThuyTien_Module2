@@ -35,6 +35,10 @@ public class Student extends Person{
         this.score = score;
     }
 
+    public String getInfo(){
+        return String.format("%s, %s, %s, %s, %s, %s\n", this.getId(), this.getName(), this.getDateOfBirth(), this.getGender(), this.getClassName(), this.getScore());
+    }
+
     @Override
     public String toString() {
         return "Name: " + super.getName() +

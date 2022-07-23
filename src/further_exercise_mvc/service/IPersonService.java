@@ -1,6 +1,8 @@
 package further_exercise_mvc.service;
 
-public interface IPersonService {
+import further_exercise_mvc.model.Person;
+
+public interface IPersonService<S extends Person> {
     void add();
 
     void remove();

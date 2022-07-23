@@ -1,5 +1,6 @@
 package further_exercise_mvc.controller;
 
+import further_exercise_mvc.model.Person;
 import further_exercise_mvc.service.IPersonService;
 import further_exercise_mvc.service.impl.StudentService;
 
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 public class StudentController {
     private Scanner scanner = new Scanner(System.in);
-    private IPersonService iPersonService = new StudentService();
+    private IPersonService<Person> iPersonService = new StudentService();
 
     public void menuStudent() {
         do {

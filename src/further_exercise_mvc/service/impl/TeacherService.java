@@ -1,34 +1,49 @@
 package further_exercise_mvc.service.impl;
 
-import further_exercise_mvc.model.Student;
+import further_exercise_mvc.model.Person;
 import further_exercise_mvc.model.Teacher;
 import further_exercise_mvc.service.IPersonService;
-import further_exercise_mvc2.model.Truck;
+import further_exercise_mvc.utils.DuplicateIDException;
+import further_exercise_mvc.utils.ReadTeacherFile;
+import further_exercise_mvc.utils.WriteTeacherFile;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class TeacherService implements IPersonService {
+public class TeacherService implements IPersonService<Person> {
     private static List<Teacher> teacherList = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
+    private static final String PATH = "src/further_exercise_mvc/data/teacher.csv";
 
-    static {
-        teacherList.add(new Teacher(123, "Nguyễn Thị Thu", "24/5/1977", "Nữ", "Thạc sĩ"));
-        teacherList.add(new Teacher(456, "Nguyễn Thị Hạ", "26/6/1980", "Nữ", "Thạc sĩ"));
-        teacherList.add(new Teacher(789, "Nguyễn Thị Xuân", "12/9/1990", "Nữ", "Thạc sĩ"));
+//    static {
+//        teacherList.add(new Teacher(123, "Nguyễn Thị Thu", "24/5/1977", "Nữ", "Thạc sĩ"));
+//        teacherList.add(new Teacher(456, "Nguyễn Thị Hạ", "26/6/1980", "Nữ", "Thạc sĩ"));
+//        teacherList.add(new Teacher(789, "Nguyễn Thị Xuân", "12/9/1990", "Nữ", "Thạc sĩ"));
+//    }
+
+    public void writeFile(){
+        WriteTeacherFile.writeTeacherFile(PATH, teacherList);
     }
 
+    public void readFile(){
+        List<Teacher> list = ReadTeacherFile.readTeacherFile(PATH);
+        teacherList.clear();
+        teacherList.addAll(list);
+    }
     @Override
     public void add() {
+        readFile();
         Teacher teacher = infoTeacher();
         teacherList.add(teacher);
         System.out.println("Thêm mới thành công!");
+        writeFile();
     }
 
     @Override
     public void remove() {
+        readFile();
         System.out.println("Mời bạn nhập id cần xóa ");
         int idRemove = Integer.parseInt(scanner.nextLine());
         boolean isFlag = false;
@@ -54,6 +69,7 @@ public class TeacherService implements IPersonService {
 
     @Override
     public void displayAll() {
+        readFile();
         for (Teacher teacher : teacherList) {
             System.out.println(teacher);
         }
@@ -61,6 +77,7 @@ public class TeacherService implements IPersonService {
 
     @Override
     public void findById(int id) {
+        readFile();
         for (int i = 0; i < teacherList.size(); i++) {
             if (id == teacherList.get(i).getId()) {
                 System.out.println(teacherList.get(i).toString());
@@ -70,6 +87,7 @@ public class TeacherService implements IPersonService {
 
     @Override
     public void findByName(String name) {
+        readFile();
         boolean flag = false;
         for (Teacher teacher : teacherList) {
             if (teacher.getName().contains(name)) {
@@ -94,6 +112,7 @@ public class TeacherService implements IPersonService {
 
     @Override
     public void sortByName() {
+        readFile();
         boolean isSwap = true;
         for (int i = 0; i < teacherList.size() && isSwap; i++) {
             isSwap = false;
@@ -109,11 +128,29 @@ public class TeacherService implements IPersonService {
 //            System.out.println(teacherList.get(i) + "\n");
 //        }
         displayAll();
+        writeFile();
     }
 
     public static Teacher infoTeacher() {
-        System.out.println("Nhập id : ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        while (true) {
+            try {
+                System.out.println("Nhập id: ");
+                id = Integer.parseInt(scanner.nextLine());
+
+                for (Teacher teacher : teacherList) {
+                    if (teacher.getId() == id) {
+                        throw new DuplicateIDException("Trùng id, vui lòng nhập lại id.");
+                    }
+                }
+                break;
+            } catch (NumberFormatException e){
+                System.out.println("Vui lòng nhập số.");
+            } catch (DuplicateIDException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
         System.out.println("Nhập tên : ");
         String name = scanner.nextLine();
         System.out.println("Nhập ngày sinh : ");
@@ -122,7 +159,6 @@ public class TeacherService implements IPersonService {
         String gender = scanner.nextLine();
         System.out.println("Nhập tình độ : ");
         String speciality = scanner.nextLine();
-        Teacher teacher = new Teacher(id, name, dateOfBirth, gender, speciality);
-        return teacher;
+        return new Teacher(id, name, dateOfBirth, gender, speciality);
     }
 }
