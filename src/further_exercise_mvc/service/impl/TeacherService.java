@@ -102,6 +102,7 @@ public class TeacherService implements IPersonService<Person> {
 
     @Override
     public boolean findId(int id) {
+        readFile();
         for (Teacher teacher : teacherList) {
             if (id == teacher.getId()) {
                 return true;

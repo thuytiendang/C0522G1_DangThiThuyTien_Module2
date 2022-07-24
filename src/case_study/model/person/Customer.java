@@ -47,16 +47,15 @@ public class Customer extends Person{
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "name='" + super.getName() + '\'' +
-                ", dateOfBirth='" + super.getDateOfBirth() + '\'' +
-                ", gender=" + super.getGender() +
-                ", identityCard=" + super.getIdentityCard() +
-                ", phoneNumber=" + super.getPhoneNumber() +
-                ", email='" + super.getEmail() + '\'' +
-                "customerCode='" + customerCode + '\'' +
-                ", typeOfCustomer='" + typeOfCustomer + '\'' +
-                ", address='" + address + '\'' +
-                "} ";
+        return "Customer: " +
+                "name: " + super.getName() +
+                ", dateOfBirth: " + super.getDateOfBirth() +
+                ", gender: " + super.getGender() +
+                ", identityCard: " + super.getIdentityCard() +
+                ", phoneNumber: " + super.getPhoneNumber() +
+                ", email: " + super.getEmail() +
+                ", customerCode: " + customerCode +
+                ", typeOfCustomer: " + typeOfCustomer +
+                ", address: " + address;
     }
 }

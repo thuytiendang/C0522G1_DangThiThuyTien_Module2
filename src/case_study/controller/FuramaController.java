@@ -1,10 +1,17 @@
 package case_study.controller;
 
+import case_study.model.person.Employee;
+import case_study.service.ICustomerService;
+import case_study.service.IEmployeeService;
+import case_study.service.impl.CustomerService;
+import case_study.service.impl.EmployeeService;
+
 import java.util.Scanner;
 
 public class FuramaController {
+    Scanner scanner = new Scanner(System.in);
     public void displayMainMenu() {
-        int choice;
+        int choice ;
         do {
             System.out.println("1.\tEmployee Management\n" +
                     "2.\tCustomer Management\n" +
@@ -13,38 +20,34 @@ public class FuramaController {
                     "5.\tPromotion Management\n" +
                     "6.\tExit\n");
 
-            Scanner scanner = new Scanner(System.in);
             System.out.println("input your choice");
             choice = Integer.parseInt(scanner.nextLine());
-            if (choice <= 0 || choice > 6) {
-                System.out.println("retype your choice");
+
+            switch (choice) {
+                case 1:
+                    employeeManagement();
+                    break;
+                case 2:
+                    customerManagement();
+                    break;
+                case 3:
+                    facilityManagement();
+                    break;
+                case 4:
+                    bookingManagement();
+                    break;
+                case 5:
+                    promotionManagement();
+                    break;
+                case 6:
+                    System.exit(0);
+                default:
+                    System.err.println("The number you entered is incorrect. Please re-enter the number");
+
             }
-        } while (choice <= 0 || choice > 6);
-
-
-        switch (choice) {
-            case 1:
-                employeeManagement();
-                break;
-            case 2:
-               customerManagement();
-               break;
-            case 3:
-                facilityManagement();
-                break;
-            case 4:
-                bookingManagement();
-                break;
-            case 5:
-                promotionManagement();
-                break;
-            case 6:
-                System.exit(0);
-
-        }
-
+        } while (true);
     }
-
+    IEmployeeService iEmployeeService = new EmployeeService();
     public void employeeManagement() {
         int choice;
         do {
@@ -53,27 +56,30 @@ public class FuramaController {
                     "3\tEdit employee\n" +
                     "4\tReturn main menu\n");
 
-            Scanner scanner = new Scanner(System.in);
             System.out.println("input your choice");
             choice = Integer.parseInt(scanner.nextLine());
-            if (choice <= 0 || choice > 4) {
-                System.out.println("retype your choice");
-            }
-        } while (choice <= 0 || choice > 4);
 
-        switch (choice) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-        }
+            switch (choice) {
+                case 1:
+                    iEmployeeService.display();
+                    break;
+                case 2:
+                    iEmployeeService.add();
+                    break;
+                case 3:
+                    iEmployeeService.edit();
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+                default:
+                    System.err.println("The number you entered is incorrect. Please re-enter the number");
+            }
+        } while (true);
+
     }
 
+    ICustomerService iCustomerService = new CustomerService();
     public void customerManagement() {
         int choice;
         do {
@@ -82,25 +88,26 @@ public class FuramaController {
                     "3.\tEdit customer\n" +
                     "4.\tReturn main menu\n");
 
-            Scanner scanner = new Scanner(System.in);
             System.out.println("input your choice");
             choice = Integer.parseInt(scanner.nextLine());
-            if (choice <= 0 || choice > 4) {
-                System.out.println("retype your choice");
-            }
-        } while (choice <= 0 || choice > 4);
 
-        switch (choice) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-        }
+            switch (choice) {
+                case 1:
+                    iCustomerService.display();
+                    break;
+                case 2:
+                    iCustomerService.add();
+                    break;
+                case 3:
+                    iCustomerService.edit();
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+                default:
+                    System.err.println("The number you entered is incorrect. Please re-enter the number");
+            }
+        } while (true);
     }
 
     public void facilityManagement() {
@@ -111,25 +118,22 @@ public class FuramaController {
                     "3\tDisplay list facility maintenance\n" +
                     "4\tReturn main menu\n");
 
-            Scanner scanner = new Scanner(System.in);
             System.out.println("input your choice");
             choice = Integer.parseInt(scanner.nextLine());
-            if (choice <= 0 || choice > 4) {
-                System.out.println("retype your choice");
+            switch (choice) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+                default:
+                    System.err.println("The number you entered is incorrect. Please re-enter the number");
             }
-        } while (choice <= 0 || choice > 4);
-
-        switch (choice) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-        }
+        } while (true);
     }
 
     public void bookingManagement() {
@@ -142,25 +146,24 @@ public class FuramaController {
                     "5.\tEdit contracts\n" +
                     "6.\tReturn main menu\n");
 
-            Scanner scanner = new Scanner(System.in);
             System.out.println("input your choice");
             choice = Integer.parseInt(scanner.nextLine());
-            if (choice <= 0 || choice > 4) {
-                System.out.println("retype your choice");
-            }
-        } while (choice <= 0 || choice > 4);
 
-        switch (choice) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-        }
+            switch (choice) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+                default:
+                    System.err.println("The number you entered is incorrect. Please re-enter the number");
+            }
+        } while (true);
+
     }
 
     public void promotionManagement() {
@@ -170,29 +173,22 @@ public class FuramaController {
                     "2.\tDisplay list customers get voucher\n" +
                     "3.\tReturn main menu\n");
 
-            Scanner scanner = new Scanner(System.in);
             System.out.println("input your choice");
             choice = Integer.parseInt(scanner.nextLine());
-            if (choice <= 0 || choice > 4) {
-                System.out.println("retype your choice");
+
+            switch (choice) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+                default:
+                    System.err.println("The number you entered is incorrect. Please re-enter the number");
             }
-        } while (choice <= 0 || choice > 4);
-
-        switch (choice) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-        }
-    }
-
-    public static void main(String[] args) {
-        FuramaController furamaController = new FuramaController();
-        furamaController.displayMainMenu();
+        } while (true);
     }
 }
