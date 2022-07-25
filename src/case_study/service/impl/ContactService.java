@@ -1,6 +1,6 @@
 package case_study.service.impl;
 
-import case_study.model.person.Employee;
+import case_study.model.Contract;
 import case_study.service.IContactService;
 
 public class ContactService implements IContactService {
@@ -15,7 +15,7 @@ public class ContactService implements IContactService {
     }
 
     @Override
-    public Employee add() {
+    public Contract add() {
 
         return null;
     }

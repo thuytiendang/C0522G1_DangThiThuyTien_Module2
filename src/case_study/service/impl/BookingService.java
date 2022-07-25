@@ -1,6 +1,6 @@
 package case_study.service.impl;
 
-import case_study.model.person.Employee;
+import case_study.model.Booking;
 import case_study.service.IBookingService;
 
 public class BookingService implements IBookingService {
@@ -10,7 +10,7 @@ public class BookingService implements IBookingService {
     }
 
     @Override
-    public Employee add() {
+    public Booking add() {
 
         return null;
     }
