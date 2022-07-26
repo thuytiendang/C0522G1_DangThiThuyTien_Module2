@@ -3,14 +3,12 @@ package further_exercise_mvc.service.impl;
 import further_exercise_mvc.model.Person;
 import further_exercise_mvc.model.Teacher;
 import further_exercise_mvc.service.IPersonService;
-import further_exercise_mvc.utils.DuplicateIDException;
+import further_exercise_mvc.exception.DuplicateIDException;
+import further_exercise_mvc.utils.Function;
 import further_exercise_mvc.utils.ReadTeacherFile;
 import further_exercise_mvc.utils.WriteTeacherFile;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class TeacherService implements IPersonService<Person> {
     private static List<Teacher> teacherList = new ArrayList<>();
@@ -23,15 +21,16 @@ public class TeacherService implements IPersonService<Person> {
 //        teacherList.add(new Teacher(789, "Nguyễn Thị Xuân", "12/9/1990", "Nữ", "Thạc sĩ"));
 //    }
 
-    public void writeFile(){
+    public void writeFile() {
         WriteTeacherFile.writeTeacherFile(PATH, teacherList);
     }
 
-    public void readFile(){
+    public void readFile() {
         List<Teacher> list = ReadTeacherFile.readTeacherFile(PATH);
         teacherList.clear();
         teacherList.addAll(list);
     }
+
     @Override
     public void add() {
         readFile();
@@ -145,21 +144,22 @@ public class TeacherService implements IPersonService<Person> {
                     }
                 }
                 break;
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số.");
             } catch (DuplicateIDException e) {
                 System.out.println(e.getMessage());
             }
         }
 
-        System.out.println("Nhập tên : ");
-        String name = scanner.nextLine();
-        System.out.println("Nhập ngày sinh : ");
-        String dateOfBirth = scanner.nextLine();
-        System.out.println("Nhâp giới tính : ");
-        String gender = scanner.nextLine();
+        String name = Function.getName();
+
+        String dateOfBirth = Function.getDateOfBirth();
+
+        String gender = Function.getGender();
+
         System.out.println("Nhập tình độ : ");
         String speciality = scanner.nextLine();
+
         return new Teacher(id, name, dateOfBirth, gender, speciality);
     }
 }

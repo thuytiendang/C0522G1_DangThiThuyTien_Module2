@@ -12,17 +12,25 @@ public class StudentController {
 
     public void menuStudent() {
         do {
-            System.out.println("1. Thêm mới học sinh. \n" +
-                    "2. Xóa học sinh. \n" +
-                    "3. Xem danh sách học sinh. \n" +
-                    "4. Tìm sinh viên theo id\n" +
-                    "5. Tìm sinh viên theo tên\n" +
-                    "6. Sắp xếp tên\n" +
-                    "7. Quay về menu chính.");
+            int choice;
+            while (true) {
+                System.out.println("1. Thêm mới học sinh. \n" +
+                        "2. Xóa học sinh. \n" +
+                        "3. Xem danh sách học sinh. \n" +
+                        "4. Tìm sinh viên theo id\n" +
+                        "5. Tìm sinh viên theo tên\n" +
+                        "6. Sắp xếp tên\n" +
+                        "7. Quay về menu chính.");
+                try {
+                    System.out.println("Mời bạn nhập lựa chọn.");
+                    choice = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
 
-            int choice = Integer.parseInt(scanner.nextLine());
-
-            switch (choice){
+            switch (choice) {
                 case 1:
                     iPersonService.add();
                     break;
@@ -43,21 +51,23 @@ public class StudentController {
                     break;
                 case 7:
                     return;
+                default:
+                    System.err.println("Số bạn nhập không tồn tại. mời bạn nhập lại số!");
             }
-        }while (true);
+        } while (true);
     }
 
-    public void findById(){
+    public void findById() {
         System.out.println("Nhập id:");
         int id = Integer.parseInt(scanner.nextLine());
-        if (iPersonService.findId(id)){
+        if (iPersonService.findId(id)) {
             iPersonService.findById(id);
         } else {
             System.err.println("Không tìm thấy id này!");
         }
     }
 
-    public void findByName(){
+    public void findByName() {
         System.out.println("Nhập tên:");
         String name = scanner.nextLine();
         iPersonService.findByName(name);

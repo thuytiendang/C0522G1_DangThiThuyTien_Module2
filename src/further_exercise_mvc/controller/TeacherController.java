@@ -12,15 +12,23 @@ public class TeacherController {
 
     public void menuTeacher() {
         do {
-            System.out.println("1. Thêm mới giảng viên. \n" +
-                    "2. Xóa giảng viên. \n" +
-                    "3. Xem danh sách giảng viên. \n" +
-                    "4. Tìm giáo viên theo id\n" +
-                    "5. Tìm giáo viên theo tên\n" +
-                    "6. Sắp xếp tên\n" +
-                    "7. Quay về menu chính.");
-
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice;
+            while (true) {
+                System.out.println("1. Thêm mới giảng viên. \n" +
+                        "2. Xóa giảng viên. \n" +
+                        "3. Xem danh sách giảng viên. \n" +
+                        "4. Tìm giáo viên theo id\n" +
+                        "5. Tìm giáo viên theo tên\n" +
+                        "6. Sắp xếp tên\n" +
+                        "7. Quay về menu chính.");
+                try {
+                    System.out.println("Mời bạn nhập lựa chọn.");
+                    choice = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
 
             switch (choice) {
                 case 1:
@@ -42,7 +50,9 @@ public class TeacherController {
                     iPersonService.sortByName();
                     break;
                 case 7:
-                return;
+                    return;
+                default:
+                    System.err.println("Số bạn nhập không tồn tại. mời bạn nhập lại số!");
             }
         } while (true);
     }

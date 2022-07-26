@@ -8,13 +8,20 @@ public class MainController {
         TeacherController teacherController = new TeacherController();
         Scanner scanner = new Scanner(System.in);
         do {
-            System.out.println("CHƯƠNG TRÌNH QUẢN LÝ SINH VIÊN \n" +
-                    "1. Quản lý học sinh. \n" +
-                    "2. Quản lý giảng viên. \n" +
-                    "3. thoát chương trình.");
-
-            System.out.println("Mời bạn nhập lựa chọn.");
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice;
+            while (true){
+                System.out.println("CHƯƠNG TRÌNH QUẢN LÝ SINH VIÊN \n" +
+                        "1. Quản lý học sinh. \n" +
+                        "2. Quản lý giảng viên. \n" +
+                        "3. thoát chương trình.");
+                try {
+                    System.out.println("Mời bạn nhập lựa chọn.");
+                    choice = Integer.parseInt(scanner.nextLine());
+                    break;
+                }catch (NumberFormatException e){
+                    e.printStackTrace();
+                }
+            }
 
             switch (choice){
                 case 1:
@@ -25,9 +32,9 @@ public class MainController {
                     break;
                 case 3:
                     System.exit(0);
+                default:
+                    System.err.println("Số bạn nhập không tồn tại. mời bạn nhập lại số!");
             }
         }while (true);
-
-
     }
 }

@@ -3,7 +3,8 @@ package further_exercise_mvc.service.impl;
 import further_exercise_mvc.model.Person;
 import further_exercise_mvc.model.Student;
 import further_exercise_mvc.service.IPersonService;
-import further_exercise_mvc.utils.DuplicateIDException;
+import further_exercise_mvc.exception.DuplicateIDException;
+import further_exercise_mvc.utils.Function;
 import further_exercise_mvc.utils.ReadStudentFile;
 import further_exercise_mvc.utils.WriteStudentFile;
 
@@ -151,12 +152,12 @@ public class StudentService implements IPersonService<Person> {
             }
         }
 
-        System.out.println("Nhập tên: ");
-        String name = scanner.nextLine();
-        System.out.println("Nhập ngày sinh: ");
-        String dateOfBirth = scanner.nextLine();
-        System.out.println("Nhập giới tính: ");
-        String gender = scanner.nextLine();
+        String name = Function.getName();
+
+        String dateOfBirth = Function.getDateOfBirth();
+
+        String gender = Function.getGender();
+
         double score;
         while (true) {
             try {
