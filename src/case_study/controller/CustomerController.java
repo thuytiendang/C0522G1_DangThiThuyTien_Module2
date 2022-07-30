@@ -33,6 +33,7 @@ public class CustomerController {
                     iCustomerService.add();
                     break;
                 case 3:
+                    iCustomerService.display();
                     iCustomerService.edit();
                     break;
                 case 4:

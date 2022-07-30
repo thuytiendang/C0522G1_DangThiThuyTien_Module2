@@ -8,13 +8,14 @@ import java.util.Scanner;
 public class BookingController {
     Scanner scanner = new Scanner(System.in);
     IBookingService iBookingService = new BookingService();
+
     public void bookingManagement() {
         do {
             int choice;
-            while (true){
+            while (true) {
                 System.out.println("1.\tAdd new booking\n" +
                         "2.\tDisplay list booking\n" +
-                        "3.\tCreate new constracts\n" +
+                        "3.\tCreate new contracts\n" +
                         "4.\tDisplay list contracts\n" +
                         "5.\tEdit contracts\n" +
                         "6.\tReturn main menu\n");
@@ -23,7 +24,7 @@ public class BookingController {
                     System.out.println("input your choice");
                     choice = Integer.parseInt(scanner.nextLine());
                     break;
-                }catch (NumberFormatException e){
+                } catch (NumberFormatException e) {
                     e.printStackTrace();
                 }
             }

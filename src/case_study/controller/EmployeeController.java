@@ -33,6 +33,7 @@ public class EmployeeController {
                     iEmployeeService.add();
                     break;
                 case 3:
+                    iEmployeeService.display();
                     iEmployeeService.edit();
                     break;
                 case 4:

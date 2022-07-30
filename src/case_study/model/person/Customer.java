@@ -5,20 +5,22 @@ public class Customer extends Person{
     private String typeOfCustomer;
     private String address;
 
-    public Customer(String name, String dateOfBirth, String gender, int identityCard, int phoneNumber, String email, String customerCode, String typeOfCustomer, String address) {
+    public Customer(String name, String dateOfBirth, String gender, int identityCard, String phoneNumber,
+                    String email, String customerCode, String typeOfCustomer, String address) {
         super(name, dateOfBirth, gender, identityCard, phoneNumber, email);
         this.customerCode = customerCode;
         this.typeOfCustomer = typeOfCustomer;
         this.address = address;
     }
 
-    public Customer(String customerCode, String typeOfCustomer, String address) {
-        this.customerCode = customerCode;
-        this.typeOfCustomer = typeOfCustomer;
-        this.address = address;
+    public Customer() {
     }
 
-    public Customer() {
+    @Override
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",
+                this.getName(), this.getDateOfBirth(), this.getGender(), this.getIdentityCard(), this.getPhoneNumber(),
+                this.getEmail(), this.getCustomerCode(), this.getTypeOfCustomer(), this.getAddress());
     }
 
     public String getCustomerCode() {
@@ -48,14 +50,14 @@ public class Customer extends Person{
     @Override
     public String toString() {
         return "Customer: " +
-                "name: " + super.getName() +
-                ", dateOfBirth: " + super.getDateOfBirth() +
-                ", gender: " + super.getGender() +
-                ", identityCard: " + super.getIdentityCard() +
-                ", phoneNumber: " + super.getPhoneNumber() +
-                ", email: " + super.getEmail() +
-                ", customerCode: " + customerCode +
-                ", typeOfCustomer: " + typeOfCustomer +
-                ", address: " + address;
+                "CustomerCode: " + customerCode +
+                ", Name: " + super.getName() +
+                ", Date of birth: " + super.getDateOfBirth() +
+                ", Gender: " + super.getGender() +
+                ", IdentityCard: " + super.getIdentityCard() +
+                ", PhoneNumber: " + super.getPhoneNumber() +
+                ", Email: " + super.getEmail() +
+                ", Type of customer: " + typeOfCustomer +
+                ", Address: " + address;
     }
 }

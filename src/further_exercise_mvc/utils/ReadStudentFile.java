@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class ReadStudentFile {
-    private static List<String> readFile(String path){
+    private static List<String> readFile(String path) {
         List<String> list = new ArrayList<>();
         String line;
 
@@ -20,20 +20,20 @@ public class ReadStudentFile {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            while ((line = bufferedReader.readLine()) != null){
-                if (line.length() != 0){
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.length() != 0) {
                     list.add(line);
                 }
             }
             bufferedReader.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
         return list;
     }
 
-    public static List<Student> readStudentFile(String path){
+    public static List<Student> readStudentFile(String path) {
         List<String> stringList = readFile(path);
         List<Student> studentList = new ArrayList<>();
         String[] info;

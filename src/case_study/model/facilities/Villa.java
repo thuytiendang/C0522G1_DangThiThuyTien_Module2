@@ -5,20 +5,22 @@ public class Villa extends Facility{
     private float poolArea;
     private int floor;
 
-    public Villa(String nameOfService, float area, float price, int maxPeople, String typeOfRent, String roomStandard, float poolArea, int floor) {
-        super(nameOfService, area, price, maxPeople, typeOfRent);
-        this.roomStandard = roomStandard;
-        this.poolArea = poolArea;
-        this.floor = floor;
-    }
-
-    public Villa(String roomStandard, float poolArea, int floor) {
+    public Villa(String serviceCode, String nameOfService, float area, float price, int maxPeople,
+                 String typeOfRent, String roomStandard, float poolArea, int floor) {
+        super(serviceCode, nameOfService, area, price, maxPeople, typeOfRent);
         this.roomStandard = roomStandard;
         this.poolArea = poolArea;
         this.floor = floor;
     }
 
     public Villa() {
+    }
+
+    @Override
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",this.getServiceCode(),
+                this.getNameOfService(), this.getArea(), this.getPrice(), this.getMaxPeople(),
+                this.getTypeOfRent(), this.getRoomStandard(), this.getPoolArea(), this.getFloor());
     }
 
     public String getRoomStandard() {
@@ -48,7 +50,8 @@ public class Villa extends Facility{
     @Override
     public String toString() {
         return "Villa: " +
-                "nameOfService: " + super.getNameOfService() +
+                "Service code: " + super.getServiceCode() +
+                ", NameOfService: " + super.getNameOfService() +
                 ", area: " + super.getArea() +
                 ", price: " + super.getPrice() +
                 ", maxPeople: " + super.getMaxPeople() +

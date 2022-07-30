@@ -1,12 +1,13 @@
 package case_study.model.person;
 
-public class Employee extends Person{
+public class Employee extends Person {
     private String employeeCode;
     private String qualification;
     private String position;
     private float salary;
 
-    public Employee(String name, String dateOfBirth, String gender, int identityCard, int phoneNumber, String email, String employeeCode, String qualification, String position, float salary) {
+    public Employee(String name, String dateOfBirth, String gender, int identityCard, String phoneNumber,
+                    String email, String employeeCode, String qualification, String position, float salary) {
         super(name, dateOfBirth, gender, identityCard, phoneNumber, email);
         this.employeeCode = employeeCode;
         this.qualification = qualification;
@@ -14,14 +15,14 @@ public class Employee extends Person{
         this.salary = salary;
     }
 
-    public Employee(String employeeCode, String qualification, String position, float salary) {
-        this.employeeCode = employeeCode;
-        this.qualification = qualification;
-        this.position = position;
-        this.salary = salary;
+    public Employee() {
     }
 
-    public Employee() {
+    @Override
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
+                this.getName(), this.getDateOfBirth(), this.getGender(), this.getIdentityCard(), this.getPhoneNumber(),
+                this.getEmail(), this.getEmployeeCode(), this.getQualification(), this.getPosition(), this.getSalary());
     }
 
     public String getEmployeeCode() {
@@ -59,15 +60,15 @@ public class Employee extends Person{
     @Override
     public String toString() {
         return "Employee: " +
-                "name: " + super.getName() +
-                ", dateOfBirth: " + super.getDateOfBirth() +
-                ", gender: " + super.getGender() +
-                ", identityCard: " + super.getIdentityCard() +
-                ", phoneNumber: " + super.getPhoneNumber() +
-                ", email: " + super.getEmail() +
-                ", employeeCode: " + employeeCode +
-                ", qualification: " + qualification +
-                ", position: " + position +
-                ", salary: " + salary;
+                "Employee Code: " + employeeCode +
+                ", Name: " + super.getName() +
+                ", Date of birth: " + super.getDateOfBirth() +
+                ", Gender: " + super.getGender() +
+                ", Identity Card: " + super.getIdentityCard() +
+                ", Phone Number: " + super.getPhoneNumber() +
+                ", Email: " + super.getEmail() +
+                ", Qualification: " + qualification +
+                ", Position: " + position +
+                ", Salary: " + salary;
     }
 }
