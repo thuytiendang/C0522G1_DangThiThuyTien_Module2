@@ -1,14 +1,17 @@
 package further_exercise_mvc.service.impl;
 
+import further_exercise_mvc.exception.DuplicateIDException;
 import further_exercise_mvc.model.Person;
 import further_exercise_mvc.model.Teacher;
 import further_exercise_mvc.service.IPersonService;
-import further_exercise_mvc.exception.DuplicateIDException;
 import further_exercise_mvc.utils.Function;
 import further_exercise_mvc.utils.ReadTeacherFile;
 import further_exercise_mvc.utils.WriteTeacherFile;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 public class TeacherService implements IPersonService<Person> {
     private static List<Teacher> teacherList = new ArrayList<>();

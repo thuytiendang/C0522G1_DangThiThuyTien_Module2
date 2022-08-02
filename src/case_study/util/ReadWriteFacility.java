@@ -84,13 +84,7 @@ public class ReadWriteFacility {
         StringBuilder stringBuilder = new StringBuilder();
         Set<Facility> keys = facilityMap.keySet();
         for (Facility key : keys){
-            if (key instanceof Villa){
-                stringBuilder.append(key.getInfo()).append(",").append(facilityMap.get(key)).append("\n");
-            } else if (key instanceof House){
-                stringBuilder.append(key.getInfo()).append(",").append(facilityMap.get(key)).append("\n");
-            } else if (key instanceof Room){
-                stringBuilder.append(key.getInfo()).append(",").append(facilityMap.get(key)).append("\n");
-            }
+            stringBuilder.append(key.getInfo()).append(",").append(facilityMap.get(key)).append("\n");
         }
         writeFile(path, stringBuilder.toString());
     }

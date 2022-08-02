@@ -103,7 +103,7 @@ public class FacilityService implements IFacilityService {
             try {
                 System.out.println("input max people:");
                 maxPeople = Integer.parseInt(scanner.nextLine());
-                if (maxPeople < 0 || maxPeople > 20) {
+                if (maxPeople <= 0 || maxPeople > 20) {
                     throw new QuantityException("Number of people must be greater than 0 and less than 20");
                 }
                 facility.setMaxPeople(maxPeople);
@@ -118,7 +118,7 @@ public class FacilityService implements IFacilityService {
         String typeOfRent;
         while (true) {
             try {
-                System.out.println("Input type of rent: ");
+                System.out.println("Input type of rent:\n");
                 typeOfRent = scanner.nextLine();
                 if (!typeOfRent.matches("^[A-Z]\\w*( \\w)*$")) {
                     throw new TextFormatException("The type of rent is invalid, please enter it with uppercase first character!");
@@ -234,7 +234,7 @@ public class FacilityService implements IFacilityService {
                     try {
                         System.out.println("Input floor:");
                         floor = Integer.parseInt(scanner.nextLine());
-                        if (floor < 0) {
+                        if (floor <= 0) {
                             throw new PriceException("The floor must be greater than 0, please re-enter price!");
                         }
                         villa.setFloor(floor);
